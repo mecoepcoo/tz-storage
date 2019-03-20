@@ -1,0 +1,1 @@
+{"version":3,"file":"tz-local-storage.js","sources":["../src/index.js"],"sourcesContent":["import storage from './Storage'\n\nconsole.log(storage)"],"names":["console","log"],"mappings":"0FAEAA,QAAQC"}
