@@ -29,7 +29,6 @@
     "babel-eslint": "^10.0.1",
     "babel-preset-es2015-rollup": "^3.0.0",
     "eslint": "^5.15.3",
-    "eslint-plugin-vue": "^5.2.2",
     "rollup": "^1.7.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.1",
