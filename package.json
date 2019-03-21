@@ -1,27 +1,25 @@
 {
-  "name": "tz-vue-localstorage",
+  "name": "tz-storage",
   "version": "0.0.1",
-  "description": "A light-weight localStorage plugin for Vue.js.",
+  "description": "A light-weight localStorage tool.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mecoepcoo/tz-vue-localstorage.git"
+    "url": "git+https://github.com/mecoepcoo/tz-storage.git"
   },
   "keywords": [
-    "vuejs",
     "localstorage",
-    "vue-localstorage",
-    "vue"
+    "storage"
   ],
   "author": "Tianzhen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mecoepcoo/tz-vue-localstorage/issues"
+    "url": "https://github.com/mecoepcoo/tz-storage/issues"
   },
-  "homepage": "https://github.com/mecoepcoo/tz-vue-localstorage#readme",
+  "homepage": "https://github.com/mecoepcoo/tz-storage#readme",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.4.0",
@@ -35,7 +33,6 @@
     "rollup-plugin-eslint": "^5.0.0",
     "rollup-plugin-node-resolve": "^4.0.1",
     "rollup-plugin-replace": "^2.1.1",
-    "rollup-plugin-uglify": "^6.0.2",
-    "vue": "^2.6.10"
+    "rollup-plugin-uglify": "^6.0.2"
   }
 }
