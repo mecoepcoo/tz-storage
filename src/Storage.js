@@ -32,16 +32,16 @@ class Storage {
 
   /**
    * set localstorage value
-   * @param {*} key
-   * @param {*} value
+   * @param {string} key 
+   * @param {string} value 
+   * @param {number} [expire] expire timestamp, pass 0 to disable expire
    * @returns
    * @memberof Storage
    */
-  set(key, value) {
-    // todo 增加过期时间
+  set(key, value, expire = 0) {
     if (!this._isSupported) return false
     key = this._keyHandle(key)
-    value = JSON.stringify({ data: value })
+    value = JSON.stringify({ data: value , expire: expire})
     try {
       window.localStorage.setItem(key, value)
     } catch (e) {
@@ -49,12 +49,41 @@ class Storage {
     }
   }
 
+  /**
+   * get localstorage value
+   * @param {string} key 
+   * @param {object} options
+   * @param {any} options.defaultValue it will be return when the value is empty
+   * @param {string=["string","number","boolean"]} options.type parse type of the value 
+   */
   get(key, {defaultValue = null, type = 'string'} = {}) {
-    // todo 增加过期时间
-    // todo 增加类型自动转换
+    // todo 增加d.ts
     if (!this._isSupported) return defaultValue
     key = this._keyHandle(key)
-    let { data } = JSON.parse(window.localStorage.getItem(key))
+
+    let { data, expire } = JSON.parse(window.localStorage.getItem(key))
+    if (data === null) return defaultValue
+    
+    let now = new Data().getTime()
+    if (expire < now) {
+      window.localStorage.removeItem(key)
+      return defaultValue
+    }
+
+    switch (type) {
+      case 'string':
+        data = `${data}`
+        break
+      case 'number':
+        data = Number(data)
+        break
+      case 'boolean':
+        data = Boolean(data)
+        break
+      default:
+        break
+    }
+
     return data === null ? defaultValue : data
   }
 
