@@ -60,9 +60,10 @@ class Storage {
     // todo 增加d.ts
     if (!this._isSupported) return defaultValue
     key = this._keyHandle(key)
+    let _value = JSON.parse(window.localStorage.getItem(key))
+    if (_value === null) return defaultValue
 
-    let { data, expire } = JSON.parse(window.localStorage.getItem(key))
-    if (data === null) return defaultValue
+    let { data, expire } = _value
     
     let now = new Data().getTime()
     if (expire < now) {
@@ -92,4 +93,4 @@ class Storage {
   }
 }
 
-export default Storage
+export default new Storage()
