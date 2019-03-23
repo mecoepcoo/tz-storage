@@ -1,6 +1,7 @@
 class Storage {
   constructor() {
     this._namespace = ''
+    this._defaultValue = null
     this._isSupported = this._checkSupported
   }
 
@@ -30,6 +31,10 @@ class Storage {
     this._namespace = value ? `${value}.` : ''
   }
 
+  set defaultValue(value) {
+    this._defaultValue = value
+  }
+
   /**
    * set localstorage value
    * @param {string} key 
@@ -44,8 +49,10 @@ class Storage {
     value = JSON.stringify({ data: value , expire: expire})
     try {
       window.localStorage.setItem(key, value)
+      return true
     } catch (e) {
       console.error(e, `Type Error: value is not supported.`)
+      return false
     }
   }
 
@@ -53,10 +60,10 @@ class Storage {
    * get localstorage value
    * @param {string} key 
    * @param {object} options
-   * @param {any} options.defaultValue it will be return when the value is empty
+   * @param {any} options.defaultValue returned when the value is empty
    * @param {string=["string","number","boolean"]} options.type parse type of the value 
    */
-  get(key, {defaultValue = null, type = 'string'} = {}) {
+  get(key, {defaultValue = this._defaultValue, type = 'string'} = {}) {
     // todo 增加d.ts
     if (!this._isSupported) return defaultValue
     key = this._keyHandle(key)
@@ -85,6 +92,17 @@ class Storage {
     }
 
     return data === null ? defaultValue : data
+  }
+
+  /**
+   * remove the specified localstorage
+   * @param {string} key 
+   */
+  remove(key) {
+    if (!this._isSupported) return false
+    key = _keyHandle(key)
+    window.localStorage.removeItem(key)
+    return true
   }
 
   _keyHandle(key) {
