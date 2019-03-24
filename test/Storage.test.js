@@ -52,3 +52,10 @@ test('It is no doubt that set function works well without any options.', () => {
   storage.set('testSet', true)
   expect(storage.get('testSet')).toBe(true)
 })
+
+// others
+test('Namespace can be setted.', () => {
+  storage.namespace = 'my'
+  storage.set('key', 'value')
+  expect(JSON.parse(window.localStorage.getItem('my.key')).data).toBe('value')
+})
