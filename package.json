@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A light-weight localStorage tool.",
   "main": "index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
     "build:main": "rollup -c build/rollup.config.js",

@@ -32,6 +32,7 @@ class Storage {
   }
 
   set defaultValue(value) {
+    // todo 设置默认值
     this._defaultValue = value
   }
 
@@ -64,7 +65,6 @@ class Storage {
    * @param {string=["string","number","boolean"]} options.type parse type of the value 
    */
   get(key, {defaultValue = null, type} = {}) {
-    // todo 增加d.ts
     if (!this._isSupported) return defaultValue
     key = this._keyHandle(key)
     let _value = JSON.parse(window.localStorage.getItem(key))
