@@ -56,7 +56,7 @@ class Storage {
    * @param {any} options.defaultValue it will be return when the value is empty
    * @param {string=["string","number","boolean"]} options.type parse type of the value 
    */
-  get(key, {defaultValue = null, type = 'string'} = {}) {
+  get(key, {defaultValue = null, type} = {}) {
     // todo 增加d.ts
     if (!this._isSupported) return defaultValue
     key = this._keyHandle(key)
@@ -65,12 +65,11 @@ class Storage {
 
     let { data, expire } = _value
     
-    let now = new Data().getTime()
-    if (expire < now) {
+    let now = new Date().getTime()
+    if (expire && expire < now) {
       window.localStorage.removeItem(key)
       return defaultValue
     }
-
     switch (type) {
       case 'string':
         data = `${data}`
@@ -84,7 +83,7 @@ class Storage {
       default:
         break
     }
-
+    
     return data === null ? defaultValue : data
   }
 
