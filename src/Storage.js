@@ -63,20 +63,20 @@ class Storage {
    * @param {any} options.defaultValue returned when the value is empty
    * @param {string=["string","number","boolean"]} options.type parse type of the value 
    */
-  get(key, {defaultValue = this._defaultValue, type = 'string'} = {}) {
+  get(key, {defaultValue = null, type} = {}) {
     // todo 增加d.ts
     if (!this._isSupported) return defaultValue
     key = this._keyHandle(key)
+    let _value = JSON.parse(window.localStorage.getItem(key))
+    if (_value === null) return defaultValue
 
-    let { data, expire } = JSON.parse(window.localStorage.getItem(key))
-    if (data === null) return defaultValue
+    let { data, expire } = _value
     
-    let now = new Data().getTime()
-    if (expire < now) {
+    let now = new Date().getTime()
+    if (expire && expire < now) {
       window.localStorage.removeItem(key)
       return defaultValue
     }
-
     switch (type) {
       case 'string':
         data = `${data}`
@@ -90,7 +90,7 @@ class Storage {
       default:
         break
     }
-
+    
     return data === null ? defaultValue : data
   }
 
@@ -100,7 +100,7 @@ class Storage {
    */
   remove(key) {
     if (!this._isSupported) return false
-    key = _keyHandle(key)
+    key = this._keyHandle(key)
     window.localStorage.removeItem(key)
     return true
   }
@@ -110,4 +110,4 @@ class Storage {
   }
 }
 
-export default Storage
+export default new Storage()
