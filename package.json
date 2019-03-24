@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "build": "rollup -c build/rollup.config.js"
+    "build:main": "rollup -c build/rollup.config.js",
+    "build:min": "rollup -c build/rollup.minify.js",
+    "build": "npm run build:main && npm run build:min"
   },
   "repository": {
     "type": "git",
@@ -16,7 +18,10 @@
     "localstorage",
     "storage"
   ],
-  "author": "Tianzhen",
+  "author": {
+    "name": "Tianzhen",
+    "email": "mecoepcoo@vip.qq.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mecoepcoo/tz-storage/issues"

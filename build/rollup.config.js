@@ -3,7 +3,6 @@ import nodeResolve from 'rollup-plugin-node-resolve'
 import {eslint} from 'rollup-plugin-eslint'
 import commonjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
-import {uglify} from 'rollup-plugin-uglify'
 
 const env = process.env.NODE_ENV
 const version = require('../package.json').version
@@ -11,14 +10,14 @@ const version = require('../package.json').version
 export default {
   input: 'src/index.js',
   output: {
-    file: 'dist/tz-local-storage.js',
+    file: 'dist/tz-storage.js',
     format: 'umd',
     name: 'storage',
     sourcemap: true,
     banner: 
 `/**
  * tz-storage v${version}
- * (c) ${new Date().getFullYear()} Tianzhen Mecoepcoo@vip.qq.com
+ * (c) ${new Date().getFullYear()} Tianzhen mecoepcoo@vip.qq.com
  * @license MIT
  */`
   },
@@ -30,13 +29,5 @@ export default {
     nodeResolve(),
     eslint(),
     babel(),
-    uglify({
-      compress: {
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        warnings: false
-      }
-    })
   ],
 }
