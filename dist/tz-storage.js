@@ -1,6 +1,6 @@
 /**
  * tz-storage v0.0.1
- * (c) 2019 Tianzhen Mecoepcoo@vip.qq.com
+ * (c) 2019 Tianzhen mecoepcoo@vip.qq.com
  * @license MIT
  */
 (function (global, factory) {
@@ -92,7 +92,6 @@
             defaultValue = _ref$defaultValue === void 0 ? null : _ref$defaultValue,
             type = _ref.type;
 
-        // todo 增加d.ts
         if (!this._isSupported) return defaultValue;
         key = this._keyHandle(key);
 
@@ -172,6 +171,7 @@
     }, {
       key: "defaultValue",
       set: function set(value) {
+        // todo 设置默认值
         this._defaultValue = value;
       }
     }]);
