@@ -4,7 +4,7 @@
   "description": "A light-weight localStorage tool.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
