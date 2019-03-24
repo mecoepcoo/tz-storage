@@ -53,9 +53,18 @@ test('It is no doubt that set function works well without any options.', () => {
   expect(storage.get('testSet')).toBe(true)
 })
 
-// others
+/* remove test */
+test('Storage can be removed.', () => {
+  storage.set('removeTest', 'remove')
+  expect(storage.get('removeTest')).toBe('remove')
+  storage.remove('removeTest')
+  expect(storage.get('removeTest')).toBe(null)
+})
+
+/* others */
 test('Namespace can be setted.', () => {
   storage.namespace = 'my'
+  expect(storage.namespace).toBe('my.')
   storage.set('key', 'value')
   expect(JSON.parse(window.localStorage.getItem('my.key')).data).toBe('value')
 })
