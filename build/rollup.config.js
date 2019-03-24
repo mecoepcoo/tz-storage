@@ -6,6 +6,7 @@ import replace from 'rollup-plugin-replace'
 import {uglify} from 'rollup-plugin-uglify'
 
 const env = process.env.NODE_ENV
+const version = require('../package.json').version
 
 export default {
   input: 'src/index.js',
@@ -31,5 +32,11 @@ export default {
         warnings: false
       }
     })
-  ]
+  ],
+  banner: 
+`/**
+ * tz-storage v${version}
+ * (c) ${new Date().getFullYear()} Tianzhen Mecoepcoo@vip.qq.com
+ * @license MIT
+ */`
 }
