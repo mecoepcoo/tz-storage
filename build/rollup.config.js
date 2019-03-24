@@ -15,6 +15,12 @@ export default {
     format: 'umd',
     name: 'storage',
     sourcemap: true,
+    banner: 
+`/**
+ * tz-storage v${version}
+ * (c) ${new Date().getFullYear()} Tianzhen Mecoepcoo@vip.qq.com
+ * @license MIT
+ */`
   },
   plugins: [
     replace({
@@ -33,10 +39,4 @@ export default {
       }
     })
   ],
-  banner: 
-`/**
- * tz-storage v${version}
- * (c) ${new Date().getFullYear()} Tianzhen Mecoepcoo@vip.qq.com
- * @license MIT
- */`
 }

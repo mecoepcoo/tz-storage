@@ -4,13 +4,15 @@
   "description": "A light-weight localStorage tool.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "build": "rollup -c build/rollup.config.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mecoepcoo/tz-storage.git"
   },
   "keywords": [
+    "js-localstorage",
     "localstorage",
     "storage"
   ],
