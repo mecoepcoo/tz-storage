@@ -14,6 +14,10 @@ class Storage {
     return window.localStorage && (window.localStorage.setItem('tls', 'ls') , window.localStorage.getItem('tls') === 'ls')
   }
 
+  get isSupported() {
+    return this._checkSupported
+  }
+
   /**
    * namespace getter
    * @memberof Storage
@@ -32,7 +36,6 @@ class Storage {
   }
 
   set defaultValue(value) {
-    // todo 设置默认值
     this._defaultValue = value
   }
 
@@ -64,7 +67,7 @@ class Storage {
    * @param {any} options.defaultValue returned when the value is empty
    * @param {string=["string","number","boolean"]} options.type parse type of the value 
    */
-  get(key, {defaultValue = null, type} = {}) {
+  get(key, {defaultValue = this._defaultValue, type} = {}) {
     if (!this._isSupported) return defaultValue
     key = this._keyHandle(key)
     let _value = JSON.parse(window.localStorage.getItem(key))

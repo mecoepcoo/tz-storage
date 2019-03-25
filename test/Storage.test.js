@@ -68,3 +68,8 @@ test('Namespace can be setted.', () => {
   storage.set('key', 'value')
   expect(JSON.parse(window.localStorage.getItem('my.key')).data).toBe('value')
 })
+
+test('DefaultValue can be setted in advance.', () => {
+  storage.defaultValue = '0'
+  expect(storage.get('testDefault')).toBe('0')
+})
