@@ -89,7 +89,7 @@
       value: function get(key) {
         var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
             _ref$defaultValue = _ref.defaultValue,
-            defaultValue = _ref$defaultValue === void 0 ? null : _ref$defaultValue,
+            defaultValue = _ref$defaultValue === void 0 ? this._defaultValue : _ref$defaultValue,
             type = _ref.type;
 
         if (!this._isSupported) return defaultValue;
@@ -149,6 +149,11 @@
       get: function get() {
         return window.localStorage && (window.localStorage.setItem('tls', 'ls'), window.localStorage.getItem('tls') === 'ls');
       }
+    }, {
+      key: "isSupported",
+      get: function get() {
+        return this._checkSupported;
+      }
       /**
        * namespace getter
        * @memberof Storage
@@ -171,7 +176,6 @@
     }, {
       key: "defaultValue",
       set: function set(value) {
-        // todo 设置默认值
         this._defaultValue = value;
       }
     }]);
