@@ -1,10 +1,10 @@
 # tz-storage
-![GitHub file size in bytes](https://img.shields.io/github/size/mecoepcoo/tz-storage/dist/tz-storage.min.js.svg)
-![GitHub](https://img.shields.io/github/license/mecoepcoo/tz-storage.svg)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/mecoepcoo/tz-storage.svg)
-![npm](https://img.shields.io/npm/v/tz-storage.svg?color=blueviolet)
-![npm](https://img.shields.io/npm/dt/tz-storage.svg)
-
+<a href="https://www.npmjs.com/package/tz-storage"><img src="https://img.shields.io/github/size/mecoepcoo/tz-storage/dist/tz-storage.min.js.svg" alt="size"></a>
+<a href="https://github.com/mecoepcoo/tz-storage/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mecoepcoo/tz-storage.svg" alt="license"></a>
+<a href="[https://github.com/mecoepcoo/tz-storage/blob/master/LICENSE](https://codecov.io/gh/mecoepcoo/tz-storage)"><img src="https://img.shields.io/codecov/c/github/mecoepcoo/tz-storage.svg" alt="coverage"></a>
+<a href="https://github.com/mecoepcoo/tz-storage"><img src="https://img.shields.io/github/package-json/v/mecoepcoo/tz-storage.svg" alt="github version"></a>
+<a href="https://www.npmjs.com/package/tz-storage"><img src="https://img.shields.io/npm/v/tz-storage.svg?color=blueviolet" alt="npm version"></a>
+<a href="https://npmcharts.com/compare/tz-storage"><img src="https://img.shields.io/npm/dt/tz-storage.svg" alt="downloads"></a>
 
 A light-weight localStorage tool.
 
@@ -15,8 +15,13 @@ A light-weight localStorage tool.
 - ~3kb before gzipped
 
 # Install
+## npm
 ```shell
 $ npm install tz-localstorage --save
+```
+## browser
+```javascript
+<script src="tz-storage.min.js"></script>
 ```
 
 # Usage
