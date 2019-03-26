@@ -46,7 +46,7 @@ storage.set('key', 'value', new Date().getTime() + 8640000)
 ```
 
 ## Get
-Get with a default empty value:
+Replace with a custom value when the value is empty.
 ```javascript
 storage.get('key', { defaultValue: 'empty' })
 ```

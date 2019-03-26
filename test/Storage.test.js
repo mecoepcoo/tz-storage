@@ -1,6 +1,8 @@
 import './mock-localstorage'
 import storage from '../src/Storage'
 
+let mockStorage = window.localStorage
+
 window.localStorage.clear()
 
 /* get test */
@@ -33,6 +35,11 @@ test('It returns default value if value is exactly null.', () => {
   expect(storage.get('testkey', { defaultValue: defaultValue })).toBe(defaultValue)
 })
 
+test('It throws error if data type is unsupported.', () => {
+  storage.set('typeErrorTest', ['a', 'b'])
+  expect(storage.get('typeErrorTest', { type: 'array' })).toBe(false)
+})
+
 /* set test */
 test('It is no doubt that set function works well without any options.', () => {
   window.localStorage.clear()
@@ -62,6 +69,10 @@ test('Storage can be removed.', () => {
 })
 
 /* others */
+test('It should return true if this localStorage is supported.', () => {
+  expect(storage.isSupported).toBe(true)
+})
+
 test('Namespace can be setted.', () => {
   storage.namespace = 'my'
   expect(storage.namespace).toBe('my.')
@@ -72,4 +83,16 @@ test('Namespace can be setted.', () => {
 test('DefaultValue can be setted in advance.', () => {
   storage.defaultValue = '0'
   expect(storage.get('testDefault')).toBe('0')
+  storage.defaultValue = null
 })
+
+test('When the localStorage is not supported, it return false.', () => {
+  window.localStorage.clear()
+  window.localStorage = undefined;
+  expect(storage.isSupported).toBe(false)
+  expect(storage.set('key', 'value')).toBe(false)
+  expect(storage.get('key')).toBe(null)
+  expect(storage.remove('key')).toBe(false)
+})
+
+window.storage = mockStorage

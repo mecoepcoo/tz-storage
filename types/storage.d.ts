@@ -3,7 +3,7 @@ declare class Storage {
 
   namespace: string;
   defaultValue: any;
-  isSupported: boolean
+  isSupported: boolean;
 
   /**
    * 增加缓存

@@ -2,7 +2,6 @@ class Storage {
   constructor() {
     this._namespace = ''
     this._defaultValue = null
-    this._isSupported = this._checkSupported
   }
 
   /**
@@ -11,7 +10,8 @@ class Storage {
    * @memberof Storage
    */
   get _checkSupported() {
-    return window.localStorage && (window.localStorage.setItem('tls', 'ls') , window.localStorage.getItem('tls') === 'ls')
+    return window.localStorage && (window.localStorage.setItem('tls', 'ls') , window.localStorage.getItem('tls') === 'ls') ?
+    true : false
   }
 
   get isSupported() {
@@ -48,16 +48,11 @@ class Storage {
    * @memberof Storage
    */
   set(key, value, expire = 0) {
-    if (!this._isSupported) return false
+    if (!this._checkSupported) return false
     key = this._keyHandle(key)
     value = JSON.stringify({ data: value , expire: expire})
-    try {
-      window.localStorage.setItem(key, value)
-      return true
-    } catch (e) {
-      console.error(e, `Type Error: value is not supported.`)
-      return false
-    }
+    window.localStorage.setItem(key, value)
+    return true
   }
 
   /**
@@ -68,7 +63,7 @@ class Storage {
    * @param {string=["string","number","boolean"]} options.type parse type of the value 
    */
   get(key, {defaultValue = this._defaultValue, type} = {}) {
-    if (!this._isSupported) return defaultValue
+    if (!this._checkSupported) return defaultValue
     key = this._keyHandle(key)
     let _value = JSON.parse(window.localStorage.getItem(key))
     if (_value === null) return defaultValue
@@ -80,19 +75,26 @@ class Storage {
       window.localStorage.removeItem(key)
       return defaultValue
     }
-    switch (type) {
-      case 'string':
-        data = `${data}`
-        break
-      case 'number':
-        data = Number(data)
-        break
-      case 'boolean':
-        data = Boolean(data)
-        break
-      default:
-        break
+
+    try {
+      if (type && (['number', 'string', 'boolean'].indexOf(type) < 0)) throw(`Type Error: unsupported type param.`)
+    } catch (e) {
+      console.error(e)
+      return false
     }
+      switch (type) {
+        case 'string':
+          data = `${data}`
+          break
+        case 'number':
+          data = Number(data)
+          break
+        case 'boolean':
+          data = Boolean(data)
+          break
+        default:
+          break
+      }
     
     return data === null ? defaultValue : data
   }
@@ -102,7 +104,7 @@ class Storage {
    * @param {string} key 
    */
   remove(key) {
-    if (!this._isSupported) return false
+    if (!this._checkSupported) return false
     key = this._keyHandle(key)
     window.localStorage.removeItem(key)
     return true
