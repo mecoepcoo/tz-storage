@@ -90,6 +90,13 @@ test('DefaultValue can be setted in advance.', () => {
   storage.defaultValue = null
 })
 
+test('Set namespace and default value by config', () => {
+  storage.config({ namespace: 'config', defaultValue: 'defaultValue' })
+  expect(storage.namespace).toBe('config')
+  expect(storage._defaultValue).toBe('defaultValue')
+  storage.config()
+})
+
 test('When the localStorage is not supported, it return false.', () => {
   window.localStorage.clear()
   window.localStorage = undefined;

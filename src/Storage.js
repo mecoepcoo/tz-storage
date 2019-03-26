@@ -40,6 +40,18 @@ class Storage {
   }
 
   /**
+   * init config
+   * @memberof Storage
+   */
+  config({
+    namespace = '',
+    defaultValue = null
+  } = {}) {
+    this._namespace = namespace
+    this._defaultValue = defaultValue
+  }
+
+  /**
    * set localstorage value
    * @param {string} key 
    * @param {string} value 

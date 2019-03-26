@@ -39,7 +39,6 @@
 
       this._namespace = '';
       this._defaultValue = null;
-      this._isSupported = this._checkSupported;
     }
     /**
      * check supported getter
@@ -49,8 +48,22 @@
 
 
     _createClass(Storage, [{
-      key: "set",
+      key: "config",
 
+      /**
+       * init config
+       * @memberof Storage
+       */
+      value: function config() {
+        var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+            _ref$namespace = _ref.namespace,
+            namespace = _ref$namespace === void 0 ? '' : _ref$namespace,
+            _ref$defaultValue = _ref.defaultValue,
+            defaultValue = _ref$defaultValue === void 0 ? null : _ref$defaultValue;
+
+        this._namespace = namespace;
+        this._defaultValue = defaultValue;
+      }
       /**
        * set localstorage value
        * @param {string} key 
@@ -59,22 +72,19 @@
        * @returns
        * @memberof Storage
        */
+
+    }, {
+      key: "set",
       value: function set(key, value) {
         var expire = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-        if (!this._isSupported) return false;
+        if (!this._checkSupported) return false;
         key = this._keyHandle(key);
         value = JSON.stringify({
           data: value,
           expire: expire
         });
-
-        try {
-          window.localStorage.setItem(key, value);
-          return true;
-        } catch (e) {
-          console.error(e, "Type Error: value is not supported.");
-          return false;
-        }
+        window.localStorage.setItem(key, value);
+        return true;
       }
       /**
        * get localstorage value
@@ -87,12 +97,12 @@
     }, {
       key: "get",
       value: function get(key) {
-        var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-            _ref$defaultValue = _ref.defaultValue,
-            defaultValue = _ref$defaultValue === void 0 ? this._defaultValue : _ref$defaultValue,
-            type = _ref.type;
+        var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+            _ref2$defaultValue = _ref2.defaultValue,
+            defaultValue = _ref2$defaultValue === void 0 ? this._defaultValue : _ref2$defaultValue,
+            type = _ref2.type;
 
-        if (!this._isSupported) return defaultValue;
+        if (!this._checkSupported) return defaultValue;
         key = this._keyHandle(key);
 
         var _value = JSON.parse(window.localStorage.getItem(key));
@@ -105,6 +115,13 @@
         if (expire && expire < now) {
           window.localStorage.removeItem(key);
           return defaultValue;
+        }
+
+        try {
+          if (type && ['number', 'string', 'boolean'].indexOf(type) < 0) throw "Type Error: unsupported type param.";
+        } catch (e) {
+          console.error(e);
+          return false;
         }
 
         switch (type) {
@@ -134,7 +151,7 @@
     }, {
       key: "remove",
       value: function remove(key) {
-        if (!this._isSupported) return false;
+        if (!this._checkSupported) return false;
         key = this._keyHandle(key);
         window.localStorage.removeItem(key);
         return true;
@@ -147,7 +164,7 @@
     }, {
       key: "_checkSupported",
       get: function get() {
-        return window.localStorage && (window.localStorage.setItem('tls', 'ls'), window.localStorage.getItem('tls') === 'ls');
+        return window.localStorage && (window.localStorage.setItem('tls', 'ls'), window.localStorage.getItem('tls') === 'ls') ? true : false;
       }
     }, {
       key: "isSupported",
