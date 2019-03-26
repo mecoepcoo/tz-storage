@@ -17,7 +17,7 @@ A light-weight localStorage tool.
 # Install
 ## npm
 ```shell
-$ npm install tz-localstorage --save
+$ npm install tz-storage --save
 ```
 ## browser
 ```javascript
