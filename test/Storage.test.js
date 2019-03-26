@@ -33,6 +33,8 @@ test('It returns specified type when type is setted.', () => {
 test('It returns default value if value is exactly null.', () => {
   let defaultValue = 'empty'
   expect(storage.get('testkey', { defaultValue: defaultValue })).toBe(defaultValue)
+  storage.set('testDefaultKey', null)
+  expect(storage.get('testDefaultKey', { defaultValue: defaultValue })).toBe(defaultValue)
 })
 
 test('It throws error if data type is unsupported.', () => {
@@ -74,6 +76,8 @@ test('It should return true if this localStorage is supported.', () => {
 })
 
 test('Namespace can be setted.', () => {
+  storage.namespace = ''
+  expect(storage.namespace).toBe('')
   storage.namespace = 'my'
   expect(storage.namespace).toBe('my.')
   storage.set('key', 'value')
