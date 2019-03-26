@@ -40,6 +40,14 @@ Set a default value in advance:
 storage.defaultValue = 'nothing'
 ```
 
+Set options by config:
+```javascript
+storage.config({
+  namespace: 'space',
+  defaultValue: 'empty'
+})
+```
+
 ## Set
 Set a storage with any types:
 ```javascript
