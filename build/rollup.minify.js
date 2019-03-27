@@ -11,5 +11,6 @@ config.plugins.push(uglify({
 }))
 
 config.output.file = 'dist/tz-storage.min.js'
+config.output.sourcemap = false
 
 export default config
