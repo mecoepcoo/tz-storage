@@ -1,7 +1,6 @@
 language: node_js
 
 node_js:
-  - "10"
   - "stable"
 
 install:
@@ -12,7 +11,7 @@ script:
   - npm test
 
 after_success:
-  - npm test
+  - npm run coverage
 
 notifications:
   email: false

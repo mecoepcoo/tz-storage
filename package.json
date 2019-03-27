@@ -5,7 +5,8 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "test": "jest --coverage --collectCoverage && codecov --token=23ae210b-0144-40e3-908f-c05411011078",
+    "test": "jest",
+    "coverage": "jest --coverage --collectCoverage && codecov --token=$CODECOV_TOKEN",
     "build:main": "rollup -c build/rollup.config.js",
     "build:min": "rollup -c build/rollup.minify.js",
     "build": "npm run build:main && npm run build:min"
