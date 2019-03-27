@@ -4,7 +4,7 @@
 <a href="[https://github.com/mecoepcoo/tz-storage/blob/master/LICENSE](https://codecov.io/gh/mecoepcoo/tz-storage)"><img src="https://img.shields.io/codecov/c/github/mecoepcoo/tz-storage.svg" alt="coverage"></a>
 <a href="https://github.com/mecoepcoo/tz-storage"><img src="https://img.shields.io/github/package-json/v/mecoepcoo/tz-storage.svg" alt="github version"></a>
 <a href="https://www.npmjs.com/package/tz-storage"><img src="https://img.shields.io/npm/v/tz-storage.svg?color=blueviolet" alt="npm version"></a>
-<a href="https://npmcharts.com/compare/tz-storage"><img src="https://img.shields.io/npm/dt/tz-storage.svg" alt="downloads"></a>
+<a href="https://www.travis-ci.org/mecoepcoo/tz-storage"><img src="https://img.shields.io/travis/mecoepcoo/tz-storage.svg?color=blue" alt="build"></a>
 
 A light-weight localStorage tool.
 
