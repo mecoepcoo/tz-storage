@@ -47,8 +47,8 @@ class Storage {
     namespace = '',
     defaultValue = null
   } = {}) {
-    this._namespace = namespace
-    this._defaultValue = defaultValue
+    this.namespace = namespace
+    this.defaultValue = defaultValue
   }
 
   /**

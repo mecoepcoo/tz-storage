@@ -92,7 +92,7 @@ test('DefaultValue can be setted in advance.', () => {
 
 test('Set namespace and default value by config', () => {
   storage.config({ namespace: 'config', defaultValue: 'defaultValue' })
-  expect(storage.namespace).toBe('config')
+  expect(storage.namespace).toBe('config.')
   expect(storage._defaultValue).toBe('defaultValue')
   storage.config()
 })
