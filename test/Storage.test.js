@@ -1,5 +1,6 @@
 import './mock-localstorage'
-import storage from '../src/Storage'
+import Storage from '../src/Storage'
+import storage from '../src/index'
 
 let mockStorage = window.localStorage
 
@@ -104,6 +105,10 @@ test('When the localStorage is not supported, it return false.', () => {
   expect(storage.set('key', 'value')).toBe(false)
   expect(storage.get('key')).toBe(null)
   expect(storage.remove('key')).toBe(false)
+})
+
+test("Create a new tz-storage instance", () => { 
+  expect(storage.create()).toBeInstanceOf(Storage)
 })
 
 window.storage = mockStorage

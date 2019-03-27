@@ -1,3 +1,3 @@
-import storage from './Storage'
+import Storage from './Storage'
 
-export default storage
+export default new Storage()

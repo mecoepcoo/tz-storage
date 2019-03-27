@@ -125,6 +125,10 @@ class Storage {
   _keyHandle(key) {
     return this._namespace + key
   }
+
+  create(){
+    return new Storage()
+  }
 }
 
-export default new Storage()
+export default Storage
