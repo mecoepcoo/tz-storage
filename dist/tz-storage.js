@@ -1,5 +1,5 @@
 /**
- * tz-storage v1.0.0
+ * tz-storage v1.0.3
  * (c) 2019 Tianzhen mecoepcoo@vip.qq.com
  * @license MIT
  */
@@ -61,8 +61,8 @@
             _ref$defaultValue = _ref.defaultValue,
             defaultValue = _ref$defaultValue === void 0 ? null : _ref$defaultValue;
 
-        this._namespace = namespace;
-        this._defaultValue = defaultValue;
+        this.namespace = namespace;
+        this.defaultValue = defaultValue;
       }
       /**
        * set localstorage value
@@ -162,6 +162,11 @@
         return this._namespace + key;
       }
     }, {
+      key: "create",
+      value: function create() {
+        return new Storage();
+      }
+    }, {
       key: "_checkSupported",
       get: function get() {
         return window.localStorage && (window.localStorage.setItem('tls', 'ls'), window.localStorage.getItem('tls') === 'ls') ? true : false;
@@ -200,9 +205,9 @@
     return Storage;
   }();
 
-  var storage = new Storage();
+  var index = new Storage();
 
-  return storage;
+  return index;
 
 }));
 //# sourceMappingURL=tz-storage.js.map
