@@ -1,0 +1,18 @@
+language: node_js
+
+node_js:
+  - "10"
+  - "stable"
+
+install:
+  - npm install
+
+script:
+  - npm run build
+  - npm test
+
+after_success:
+  - npm test
+
+notifications:
+  email: false

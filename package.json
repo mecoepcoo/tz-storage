@@ -1,11 +1,11 @@
 {
   "name": "tz-storage",
-  "version": "1.0.3",
+  "version": "1.0.2",
   "description": "A light-weight localStorage tool.",
   "main": "index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "test": "jest --coverage --collectCoverage && codecov",
+    "test": "jest --coverage --collectCoverage && codecov --token=23ae210b-0144-40e3-908f-c05411011078",
     "build:main": "rollup -c build/rollup.config.js",
     "build:min": "rollup -c build/rollup.minify.js",
     "build": "npm run build:main && npm run build:min"
