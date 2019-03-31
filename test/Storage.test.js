@@ -76,6 +76,10 @@ test('It should return true if this localStorage is supported.', () => {
   expect(storage.isSupported).toBe(true)
 })
 
+test('Test storage should be removed.', () => {
+  expect(window.localStorage.getItem('_testStorage')).toBe(null)
+})
+
 test('Namespace can be setted.', () => {
   storage.namespace = ''
   expect(storage.namespace).toBe('')
@@ -105,10 +109,9 @@ test('When the localStorage is not supported, it return false.', () => {
   expect(storage.set('key', 'value')).toBe(false)
   expect(storage.get('key')).toBe(null)
   expect(storage.remove('key')).toBe(false)
+  window.localStorage = mockStorage
 })
 
 test("Create a new tz-storage instance", () => { 
   expect(storage.create()).toBeInstanceOf(Storage)
 })
-
-window.storage = mockStorage
