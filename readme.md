@@ -75,5 +75,5 @@ storage.get('key', { type: 'number' })
 
 ## Remove
 ```javascript
-storage.get('key')
+storage.remove('key')
 ```
