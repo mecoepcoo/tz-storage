@@ -1,5 +1,5 @@
 /**
- * tz-storage v1.0.3
+ * tz-storage v1.0.4
  * (c) 2019 Tianzhen mecoepcoo@vip.qq.com
  * @license MIT
  */
@@ -169,7 +169,9 @@
     }, {
       key: "_checkSupported",
       get: function get() {
-        return window.localStorage && (window.localStorage.setItem('tls', 'ls'), window.localStorage.getItem('tls') === 'ls') ? true : false;
+        var isSupported = window.localStorage && (window.localStorage.setItem('_testStorage', 'storage'), window.localStorage.getItem('_testStorage') === 'storage') ? true : false;
+        window.localStorage && window.localStorage.removeItem('_testStorage');
+        return isSupported;
       }
     }, {
       key: "isSupported",
