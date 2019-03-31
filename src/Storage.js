@@ -10,8 +10,9 @@ class Storage {
    * @memberof Storage
    */
   get _checkSupported() {
-    return window.localStorage && (window.localStorage.setItem('tls', 'ls') , window.localStorage.getItem('tls') === 'ls') ?
-    true : false
+    let isSupported = window.localStorage && (window.localStorage.setItem('_testStorage', 'storage') , window.localStorage.getItem ('_testStorage') === 'storage') ? true : false
+    window.localStorage && window.localStorage.removeItem('_testStorage')
+    return isSupported
   }
 
   get isSupported() {
