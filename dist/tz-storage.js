@@ -1,5 +1,5 @@
 /**
- * tz-storage v1.0.5
+ * tz-storage v1.0.6
  * (c) 2019 Tianzhen mecoepcoo@vip.qq.com
  * @license MIT
  */
