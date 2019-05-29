@@ -6,7 +6,7 @@
 <a href="https://www.npmjs.com/package/tz-storage"><img src="https://img.shields.io/npm/v/tz-storage.svg?color=blueviolet" alt="npm version"></a>
 <a href="https://npmcharts.com/compare/tz-storage"><img src="https://img.shields.io/npm/dt/tz-storage.svg" alt="downloads"></a>
 
-[English]("./readme.md")
+[English]("https://github.com/mecoepcoo/tz-storage/blob/develop/readme.md")
 
 轻量的localStorage工具。
 
