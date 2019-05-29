@@ -14,6 +14,7 @@ A light-weight localStorage tool.
 - Supports any type of data
 - Supports UMD
 - JSON support
+- expiration support
 - ~3kb before gzipped
 
 # Install
