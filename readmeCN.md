@@ -6,75 +6,77 @@
 <a href="https://www.npmjs.com/package/tz-storage"><img src="https://img.shields.io/npm/v/tz-storage.svg?color=blueviolet" alt="npm version"></a>
 <a href="https://npmcharts.com/compare/tz-storage"><img src="https://img.shields.io/npm/dt/tz-storage.svg" alt="downloads"></a>
 
-[简体中文]("./readmeCN.md")
+[English]("./readme.md")
 
-A light-weight localStorage tool.
+轻量的localStorage工具。
 
-- No dependency
-- Supports any type of data
-- Supports UMD
-- JSON support
-- ~3kb before gzipped
+- 无依赖
+- 支持任意类型的数据
+- 支持UMD
+- 支持JSON
+- 未压缩时不超过3kb
 
-# Install
+# 安装
 ## npm
 ```shell
 $ npm install tz-storage --save
 ```
-## browser
+## 浏览器
+下载dist目录中的文件并导入
+
 ```javascript
 <script src="tz-storage.min.js"></script>
 ```
 
-# Usage
-Check compatibility:
+# 用法
+检查兼容性:
 ```javascript
-storage.isSupported // return true or false
+storage.isSupported // 返回 true 或者 false
 ```
 
-Set a storage namespace, it turns key to 'namespace.key':
+设置命名空间，storage 的 key 将统一变为 “namespace.key” 的形式
 ```javascript
 storage.namespace = 'mystorage'
 ```
 
-Set a default value in advance:
+统一设置取到空值时的返回值
 ```javascript
-storage.defaultValue = 'nothing'
+storage.defaultValue = 'nothing' // 当使用get方法取到空值时，将返回 'nothing'
 ```
 
-Set options by config:
+也可以用 config 来初始化配置（推荐）
 ```javascript
 storage.config({
-  namespace: 'space',
+  namespace: 'space', // 默认值: ''
   defaultValue: 'empty'
 })
 ```
 
 ## Set
-Set a storage with any types:
+你可以保存任意数据类型:
 ```javascript
 storage.set('key', {active: true, label: 'helloword'})
 storage.set('key', [1, 2, 3, 4])
 storage.set('key', 'hello')
 ```
 
-Set a expire time, it returns default value when expired:
+设置过期时间，不设置则不会过期。如果取值时已经过期，则返回默认的或者由配置指定的空值:
 ```javascript
 storage.set('key', 'value', new Date().getTime() + 8640000)
 ```
 
 ## Get
-Replace with a custom value when the value is empty.
+可以自定义空值:
 ```javascript
-storage.get('key', { defaultValue: 'empty' })
+storage.get('key', { defaultValue: 'empty' }) // 当取值为空或过期时，返回 'empty'
 ```
 
-Get with specified type(only worked in string, number and boolean)
+取值时指定返回值的类型（只对 String，Number，Boolean 类型有效）:
 ```javascript
-storage.get('key', { type: 'number' })
+storage.get('key', { type: 'number' }) // 取出的值将自动转为number类型
 ```
 
 ## Remove
 ```javascript
-storage.get('key')
+storage.get('key') // 删除指定的key
 ```
