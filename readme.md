@@ -7,12 +7,15 @@
 <a href="https://www.npmjs.com/package/tz-storage"><img src="https://img.shields.io/npm/v/tz-storage.svg?color=blueviolet" alt="npm version"></a>
 <a href="https://npmcharts.com/compare/tz-storage"><img src="https://img.shields.io/npm/dt/tz-storage.svg" alt="downloads"></a>
 
+[简体中文](https://github.com/mecoepcoo/tz-storage/blob/develop/readmeCN.md)
+
 A light-weight localStorage tool.
 
 - No dependency
 - Supports any type of data
 - Supports UMD
 - JSON support
+- expiration support
 - ~3kb before gzipped
 
 # Install
