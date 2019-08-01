@@ -1,6 +1,6 @@
 {
   "name": "tz-storage",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A light-weight localStorage tool.",
   "main": "dist/tz-storage.js",
   "types": "types/index.d.ts",
